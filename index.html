@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Atajo</title>
 <meta name="description" content="Automatizaciones, cobros y webs para negocios de Rosario.">
+<meta name="theme-color" content="#13294B">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect x='3' y='3' width='24' height='24' rx='4' transform='rotate(45 15 15)' fill='%23F2B600'/%3E%3Cpath d='M10 19 L19.5 9.5 M13 9.5 H19.5 V16' fill='none' stroke='%230E1A2B' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Atajo">
+<meta property="og:description" content="Automatizaciones, cobros y webs para negocios de Rosario.">
+<!-- XXX: cuando haya dominio, sumar og:url y og:image (URL absoluta, 1200x630). -->
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800;900&family=Public+Sans:wght@400;500;600&family=Overpass+Mono:wght@500;600&display=swap">
@@ -184,6 +192,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .services, .steps { grid-template-columns: minmax(0, 1fr); }
   .steps li::after { display: none; }
   .metrics, .svc, .contact-card { padding: 22px; }
+  /* The route SVG scales down to ~60%; bump its labels so they stay readable. */
+  .route .lbl { font-size: 20px; }
+  .route .fast-lbl, .route .end-lbl { font-size: 21px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
@@ -229,7 +240,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <text class="lbl" x="260" y="262" text-anchor="middle">Abrís el sistema</text>
           <text class="lbl" x="370" y="50" text-anchor="middle">Lo tipeás</text>
           <path class="fast" d="M50 230 L470 150"/>
-          <text class="fast-lbl" x="334" y="163">Automático</text>
+          <text class="fast-lbl" x="150" y="198" text-anchor="middle" transform="rotate(-10.78 150 198)">Automático</text>
           <circle class="end" cx="470" cy="150" r="11"/>
           <text class="end-lbl" x="490" y="156">Listo</text>
           <circle class="runner" r="5">
@@ -372,14 +383,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 (function () {
   // Índigo Idiomas, mediciones reales (PageSpeed móvil).
   var metrics = [
-    { name: "Velocidad en celular", note: "Puntaje de 0 a 100, más es mejor", before: 39, lo: 53, hi: 58, fmt: function (v) { return String(v); } },
+    { name: "Velocidad en celular", note: "Puntaje de 0 a 100, más es mejor", before: 39, lo: 53, hi: 58, scale: 100, fmt: function (v) { return String(v); } },
     { name: "Tiempo hasta ver la portada", note: "Segundos, menos es mejor", before: 16, lo: 6, hi: 8, unit: " s", fmt: function (v) { return String(v); } },
     { name: "Peso de la portada", note: "Megabytes, menos es mejor", before: 9.3, lo: 4, hi: 4, unit: " MB", fmt: function (v) { return String(v).replace(".", ","); } },
-    { name: "Puntaje SEO", note: "De 0 a 100, más es mejor", before: 85, lo: 92, hi: 92, fmt: function (v) { return String(v); } }
+    { name: "Puntaje SEO", note: "De 0 a 100, más es mejor", before: 85, lo: 92, hi: 92, scale: 100, fmt: function (v) { return String(v); } }
   ];
   var box = document.getElementById("metrics");
   metrics.forEach(function (m) {
-    var max = Math.max(m.before, m.hi);
+    // Scores (0-100) are drawn against 100 so the change isn't exaggerated.
+    var max = m.scale || Math.max(m.before, m.hi);
     var unit = m.unit || "";
     var after = m.lo === m.hi ? m.fmt(m.lo) : m.fmt(m.lo) + "–" + m.fmt(m.hi);
     var el = document.createElement("div");
