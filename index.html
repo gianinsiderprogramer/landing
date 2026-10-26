@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atajo</title>
+<meta name="description" content="Automatizaciones, cobros y webs para negocios de Rosario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800;900&family=Public+Sans:wght@400;500;600&family=Overpass+Mono:wght@500;600&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: road-sign identity. Navy band hero with a drawn "shortcut" route, then quiet light sections; yellow only where the shortcut is. */
+:root {
+  --bg: #F1F4F7;
+  --surface: #FFFFFF;
+  --ink: #0E1A2B;
+  --muted: #566476;
+  --line: #D3DBE4;
+  --sign: #F2B600;
+  --sign-ink: #0E1A2B;
+  --band-bg: #13294B;
+  --band-ink: #EEF3F8;
+  --band-muted: #9FB2C9;
+  --band-line: #3A5378;
+  --before: #B7C2CF;
+  --f-display: "Overpass", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-mono: "Overpass Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B1220; --surface: #111B2C; --ink: #E5ECF4; --muted: #94A3B6; --line: #23324A;
+    --sign: #FFC52E; --sign-ink: #0B1220; --band-bg: #13223A; --band-ink: #E9EFF6;
+    --band-muted: #93A6BE; --band-line: #32496B; --before: #3D4F69; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B1220; --surface: #111B2C; --ink: #E5ECF4; --muted: #94A3B6; --line: #23324A;
+  --sign: #FFC52E; --sign-ink: #0B1220; --band-bg: #13223A; --band-ink: #E9EFF6;
+  --band-muted: #93A6BE; --band-line: #32496B; --before: #3D4F69; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sign); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1120px; margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+
+/* Header + hero band */
+.band { background: var(--band-bg); color: var(--band-ink); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 900; font-size: 24px; letter-spacing: -.01em; text-decoration: none; }
+.logo-mark { width: 30px; height: 30px; flex: none; }
+.nav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; }
+.nav a { text-decoration: none; color: var(--band-muted); }
+.nav a:hover { color: var(--band-ink); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-display); font-weight: 800; font-size: 17px;
+  padding: 13px 22px 11px; border-radius: 6px; text-decoration: none; border: 0; cursor: pointer;
+  background: var(--sign); color: var(--sign-ink);
+}
+.btn:hover { filter: brightness(1.06); }
+.btn-small { padding: 9px 16px 7px; font-size: 15px; }
+.btn-ghost { background: transparent; color: var(--band-ink); box-shadow: inset 0 0 0 2px var(--band-line); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 48px 72px; }
+.hero h1 { font-size: clamp(38px, 5.6vw, 66px); font-weight: 900; letter-spacing: -.02em; }
+.hero h1 mark { background: none; color: var(--sign); }
+.hero-sub { margin-top: 22px; font-size: 19px; color: var(--band-muted); max-width: 34em; }
+.hero-cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.route { width: 100%; height: auto; max-width: 100%; display: block; }
+.route .slow { fill: none; stroke: var(--band-muted); stroke-width: 2.5; stroke-dasharray: 2 9; stroke-linecap: round; }
+.route .stop { fill: var(--band-bg); stroke: var(--band-muted); stroke-width: 2.5; }
+.route .lbl { fill: var(--band-muted); font: 500 14px var(--f-body); }
+.route .fast { fill: none; stroke: var(--sign); stroke-width: 6; stroke-linecap: round; }
+.route .fast-lbl { fill: var(--sign); font: 800 16px var(--f-display); letter-spacing: .04em; text-transform: uppercase; }
+.route .end { fill: var(--sign); }
+.route .end-lbl { fill: var(--band-ink); font: 800 16px var(--f-display); }
+.route .runner { fill: var(--band-ink); }
+.route-cap { margin-top: 10px; font-size: 14px; color: var(--band-muted); font-family: var(--f-mono); }
+
+/* Sections */
+section { padding-block: 88px; }
+section + section { border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 14px; max-width: 46em; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(30px, 3.8vw, 44px); font-weight: 900; letter-spacing: -.015em; }
+.sec-head p { color: var(--muted); font-size: 18px; }
+
+/* Case study */
+.case { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.metrics { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 26px; }
+.metrics-legend { display: flex; gap: 20px; font-size: 13px; color: var(--muted); font-family: var(--f-mono); }
+.key { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.key-before { background: var(--before); }
+.key-after { background: var(--sign); }
+.metric { display: grid; gap: 8px; }
+.metric-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.metric-name { font-weight: 600; font-size: 16px; }
+.metric-name small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
+.metric-val { font-family: var(--f-mono); font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.metric-val .arrow { color: var(--muted); padding-inline: 4px; }
+.bars { display: grid; gap: 5px; }
+.track { height: 10px; background: transparent; position: relative; }
+.bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.bar-before { background: var(--before); }
+.bar-after { background: var(--sign); }
+.bar-range { background: var(--sign); opacity: .4; }
+.case-side { display: grid; gap: 22px; }
+.case-side h3 { font-size: 26px; font-weight: 800; }
+.case-side .client { color: var(--muted); }
+.done { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.done li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; }
+.done svg { margin-top: 5px; }
+.done .tick { stroke: var(--ink); }
+.pill { display: inline-block; font-family: var(--f-mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px 2px; border-radius: 4px; background: var(--sign); color: var(--sign-ink); margin-right: 6px; }
+.case-link { font-weight: 600; text-underline-offset: 4px; }
+.source { font-size: 13px; color: var(--muted); }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 14px; align-content: start; }
+.svc h3 { font-size: 24px; font-weight: 800; }
+.svc .pain { color: var(--muted); }
+.svc ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.svc li::marker { color: var(--muted); }
+.svc .for { font-size: 14px; color: var(--muted); padding-top: 12px; border-top: 1px dashed var(--line); }
+.svc .for b { color: var(--ink); font-weight: 600; }
+.pricing-note { margin-top: 28px; color: var(--muted); max-width: 46em; }
+
+/* Process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; padding: 0 22px 0 0; display: grid; gap: 10px; align-content: start; position: relative; }
+.steps li::before {
+  content: counter(s); font-family: var(--f-display); font-weight: 900; font-size: 22px;
+  width: 44px; height: 44px; display: grid; place-items: center; padding-top: 3px;
+  background: var(--surface); border: 2px solid var(--ink); border-radius: 50%; position: relative; z-index: 1;
+}
+.steps li::after { content: ""; position: absolute; top: 22px; left: 44px; right: 0; border-top: 2px dashed var(--line); }
+.steps li:last-child::after { display: none; }
+.steps h3 { font-size: 20px; font-weight: 800; margin-top: 6px; }
+.steps p { color: var(--muted); font-size: 16px; }
+
+/* About + contact */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.about p + p { margin-top: 14px; }
+.contact-card { background: var(--band-bg); color: var(--band-ink); border-radius: 12px; padding: 36px; display: grid; gap: 18px; }
+.contact-card h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 900; }
+.contact-card p { color: var(--band-muted); }
+.phone { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.phone-num { font-family: var(--f-mono); font-size: 20px; font-weight: 600; user-select: all; }
+.copy { font: 600 14px var(--f-body); background: transparent; color: var(--band-ink); border: 2px solid var(--band-line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.copy:hover { border-color: var(--band-muted); }
+
+footer { padding-block: 36px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hero, .case, .about { grid-template-columns: minmax(0, 1fr); }
+  .hero { gap: 36px; padding-block: 24px 56px; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+  .steps li:nth-child(2)::after { display: none; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .nav { display: none; }
+  section { padding-block: 64px; }
+  .services, .steps { grid-template-columns: minmax(0, 1fr); }
+  .steps li::after { display: none; }
+  .metrics, .svc, .contact-card { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="band">
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="#inicio" aria-label="Atajo, inicio">
+        <svg class="logo-mark" viewBox="0 0 30 30" aria-hidden="true">
+          <rect x="3" y="3" width="24" height="24" rx="4" transform="rotate(45 15 15)" fill="var(--sign)"/>
+          <path d="M10 19 L19.5 9.5 M13 9.5 H19.5 V16" fill="none" stroke="var(--sign-ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Atajo
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#caso">Caso real</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#como">Cómo trabajo</a>
+      </nav>
+      <a class="btn btn-small" href="#contacto">Diagnóstico gratis</a>
+    </header>
+
+    <div class="hero" id="inicio">
+      <div>
+        <h1>Lo que hoy hacés a mano, <mark>que se haga solo.</mark></h1>
+        <p class="hero-sub">Automatizo WhatsApp, cobros y webs para negocios de Rosario. Vos atendés a tus clientes; lo repetitivo corre por su cuenta.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#contacto">Pedí un diagnóstico gratis</a>
+          <a class="btn btn-ghost" href="#caso">Ver un caso real</a>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <svg class="route" viewBox="0 0 560 290" role="img" aria-labelledby="route-t">
+          <title id="route-t">Camino manual de cinco pasos frente a un atajo directo automatizado</title>
+          <path class="slow" d="M50 230 L150 70 L260 230 L370 70 L470 150"/>
+          <circle class="stop" cx="50" cy="230" r="7"/>
+          <circle class="stop" cx="150" cy="70" r="7"/>
+          <circle class="stop" cx="260" cy="230" r="7"/>
+          <circle class="stop" cx="370" cy="70" r="7"/>
+          <text class="lbl" x="50" y="262" text-anchor="start">Llega la foto</text>
+          <text class="lbl" x="150" y="50" text-anchor="middle">Leés el dato</text>
+          <text class="lbl" x="260" y="262" text-anchor="middle">Abrís el sistema</text>
+          <text class="lbl" x="370" y="50" text-anchor="middle">Lo tipeás</text>
+          <path class="fast" d="M50 230 L470 150"/>
+          <text class="fast-lbl" x="334" y="163">Automático</text>
+          <circle class="end" cx="470" cy="150" r="11"/>
+          <text class="end-lbl" x="490" y="156">Listo</text>
+          <circle class="runner" r="5">
+            <animateMotion dur="2.8s" repeatCount="indefinite" path="M50 230 L470 150"/>
+          </circle>
+        </svg>
+        <figcaption class="route-cap">Ejemplo: datos que llegan por WhatsApp y se cargan solos en tu sistema.</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="caso">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Caso real · Academia de idiomas</span>
+        <h2>Índigo Idiomas: una web más rápida que ahora aparece mejor en Google</h2>
+        <p>La academia vende cursos online desde su web. La portada tardaba 16 segundos en mostrarse en el celular y pesaba más de 9 MB.</p>
+      </div>
+      <div class="case">
+        <div class="metrics" id="metrics" aria-label="Resultados antes y después">
+          <div class="metrics-legend"><span><i class="key key-before"></i>Antes</span><span><i class="key key-after"></i>Después</span></div>
+        </div>
+        <div class="case-side">
+          <h3>Qué se hizo</h3>
+          <ul class="done">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imágenes pasadas a WebP, caché y compresión activadas.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Limpieza de plugins y de datos que frenaban cada página.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Actualización de PHP 8.1 a 8.3, probando tienda, pagos y cursos.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SEO configurado en páginas y cursos, con Google Search Console y sitemap.</span></li>
+          </ul>
+          <p><span class="pill">En curso</span>Cobro de cursos en cuotas con Mercado Pago, con aviso automático si un pago falla.</p>
+          <p><a class="case-link" href="https://indigoidiomas.com" target="_blank" rel="noopener">Ver indigoidiomas.com</a></p>
+          <p class="source">Velocidad medida con Google PageSpeed en celular; SEO, con la auditoría de la misma herramienta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Servicios</span>
+        <h2>Cuatro problemas que resuelvo</h2>
+        <p>Cada servicio tiene alcance y precio cerrados. Sabés qué recibís antes de empezar.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <h3>Del WhatsApp al sistema</h3>
+          <p class="pain">Te mandan fotos, audios o PDFs por WhatsApp y alguien los pasa a mano.</p>
+          <ul>
+            <li>Lectura automática de fotos y documentos con IA</li>
+            <li>Carga directa en tu sistema o planilla</li>
+            <li>Aviso cuando algo no se pudo leer</li>
+          </ul>
+          <p class="for"><b>Para:</b> administraciones, estudios contables, distribuidoras, logística.</p>
+        </article>
+        <article class="svc">
+          <h3>Cobros que se hacen solos</h3>
+          <p class="pain">Perseguir pagos te come tiempo y te desgasta con los clientes.</p>
+          <ul>
+            <li>Cuotas y suscripciones con Mercado Pago</li>
+            <li>Aviso automático cuando un pago falla</li>
+            <li>Acceso que se corta y se reactiva sin que intervengas</li>
+          </ul>
+          <p class="for"><b>Para:</b> academias, gimnasios, institutos, cursos online.</p>
+        </article>
+        <article class="svc">
+          <h3>Consultas que no se enfrían</h3>
+          <p class="pain">Te llegan consultas y se pierden por contestar tarde.</p>
+          <ul>
+            <li>Campaña en Instagram y Facebook (Meta Ads)</li>
+            <li>Respuesta al instante y seguimiento al día 1, 3 y 7</li>
+            <li>Cada consulta registrada en una planilla</li>
+          </ul>
+          <p class="for"><b>Para:</b> talleres, consultorios, comercios de barrio.</p>
+        </article>
+        <article class="svc">
+          <h3>Web rápida y al día</h3>
+          <p class="pain">Tu web tarda en cargar, no aparece en Google o nadie la actualiza.</p>
+          <ul>
+            <li>Optimización de velocidad e imágenes</li>
+            <li>SEO básico y alta en Google Search Console</li>
+            <li>Mantenimiento, backups y reporte mensual</li>
+          </ul>
+          <p class="for"><b>Para:</b> cualquier negocio con web en WordPress.</p>
+        </article>
+      </div>
+      <p class="pricing-note">Se paga una vez la puesta en marcha y, si querés que lo siga cuidando, un abono mensual por mantenimiento y mejoras.</p>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo trabajo</span>
+        <h2>De la primera charla a algo funcionando</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Diagnóstico gratis</h3><p>Me contás en qué se te va el tiempo. Te mando un video corto con lo que automatizaría primero.</p></li>
+        <li><h3>Propuesta cerrada</h3><p>Qué se hace, en cuánto tiempo y a qué precio. Sin horas sueltas ni sorpresas.</p></li>
+        <li><h3>Puesta en marcha</h3><p>Lo armo, lo probamos con casos reales de tu negocio y te explico cómo usarlo.</p></li>
+        <li><h3>Seguimiento</h3><p>Con el abono, lo mantengo andando y lo mejoro cuando tu negocio cambia.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap about">
+      <div>
+        <div class="sec-head" style="margin-bottom:20px">
+          <span class="eyebrow">Quién está detrás</span>
+          <h2>Hola, soy Gianmarco</h2>
+        </div>
+        <p>Soy desarrollador de software en Rosario. Armo automatizaciones, sistemas a medida y webs para negocios que no tienen un equipo de sistemas propio.</p>
+        <p>Trabajo directo con cada cliente: el que te responde es el mismo que lo hace.</p>
+      </div>
+      <div class="contact-card">
+        <h2>Pedí tu diagnóstico gratis</h2>
+        <p>Escribime por WhatsApp contándome qué hace tu negocio y qué tarea te gustaría sacarte de encima.</p>
+        <div class="phone">
+          <span class="phone-num" id="phone">+54 9 341 XXX-XXXX</span>
+          <button class="copy" id="copy" type="button">Copiar número</button>
+        </div>
+        <div><a class="btn" id="wa" href="https://wa.me/549341XXXXXXX?text=Hola%20Gianmarco%2C%20quiero%20pedir%20un%20diagn%C3%B3stico" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Atajo · Rosario, Santa Fe</span>
+    <span>Gianmarco Navas</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Índigo Idiomas, mediciones reales (PageSpeed móvil).
+  var metrics = [
+    { name: "Velocidad en celular", note: "Puntaje de 0 a 100, más es mejor", before: 39, lo: 53, hi: 58, fmt: function (v) { return String(v); } },
+    { name: "Tiempo hasta ver la portada", note: "Segundos, menos es mejor", before: 16, lo: 6, hi: 8, unit: " s", fmt: function (v) { return String(v); } },
+    { name: "Peso de la portada", note: "Megabytes, menos es mejor", before: 9.3, lo: 4, hi: 4, unit: " MB", fmt: function (v) { return String(v).replace(".", ","); } },
+    { name: "Puntaje SEO", note: "De 0 a 100, más es mejor", before: 85, lo: 92, hi: 92, fmt: function (v) { return String(v); } }
+  ];
+  var box = document.getElementById("metrics");
+  metrics.forEach(function (m) {
+    var max = Math.max(m.before, m.hi);
+    var unit = m.unit || "";
+    var after = m.lo === m.hi ? m.fmt(m.lo) : m.fmt(m.lo) + "–" + m.fmt(m.hi);
+    var el = document.createElement("div");
+    el.className = "metric";
+    el.innerHTML =
+      '<div class="metric-top"><div class="metric-name">' + m.name + "<small>" + m.note + "</small></div>" +
+      '<div class="metric-val">' + m.fmt(m.before) + unit + '<span class="arrow">→</span>' + after + unit + "</div></div>" +
+      '<div class="bars">' +
+        '<div class="track"><div class="bar bar-before" style="width:' + (m.before / max * 100) + '%"></div></div>' +
+        '<div class="track">' +
+          (m.hi > m.lo ? '<div class="bar bar-range" style="width:' + (m.hi / max * 100) + '%"></div>' : "") +
+          '<div class="bar bar-after" style="width:' + (m.lo / max * 100) + '%"></div>' +
+        "</div>" +
+      "</div>";
+    box.appendChild(el);
+  });
+
+  var copy = document.getElementById("copy");
+  copy.addEventListener("click", function () {
+    var txt = document.getElementById("phone").textContent;
+    var done = function () { copy.textContent = "Copiado"; setTimeout(function () { copy.textContent = "Copiar número"; }, 1800); };
+    try {
+      navigator.clipboard.writeText(txt).then(done, function () { selectPhone(); });
+    } catch (e) { selectPhone(); }
+  });
+  function selectPhone() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById("phone"));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("animateMotion").forEach(function (a) { a.remove(); });
+  }
+})();
+</script>
+</body>
+</html>
