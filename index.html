@@ -1,344 +1,464 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Atajo</title>
+<title>Atajo · Automatizaciones, cobros y webs para negocios de Rosario</title>
 <meta name="description" content="Automatizaciones, cobros y webs para negocios de Rosario.">
-<meta name="theme-color" content="#13294B">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect x='3' y='3' width='24' height='24' rx='4' transform='rotate(45 15 15)' fill='%23F2B600'/%3E%3Cpath d='M10 19 L19.5 9.5 M13 9.5 H19.5 V16' fill='none' stroke='%230E1A2B' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="author" content="Gianmarco Navas">
+<meta name="robots" content="index, follow">
+<!-- XXX: cuando haya dominio, cambiar canonical, og:url y sitemap.xml a la URL nueva. -->
+<link rel="canonical" href="https://gianinsiderprogramer.github.io/landing/">
+<meta name="theme-color" content="#0C0D0F">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C0D0F'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23F2C230'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
-<meta property="og:title" content="Atajo">
+<meta property="og:site_name" content="Atajo">
+<meta property="og:title" content="Atajo · Automatizaciones, cobros y webs para negocios de Rosario">
 <meta property="og:description" content="Automatizaciones, cobros y webs para negocios de Rosario.">
-<!-- XXX: cuando haya dominio, sumar og:url y og:image (URL absoluta, 1200x630). -->
+<meta property="og:url" content="https://gianinsiderprogramer.github.io/landing/">
+<!-- XXX: sumar og:image (URL absoluta, 1200x630) cuando esté la imagen para compartir. -->
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800;900&family=Public+Sans:wght@400;500;600&family=Overpass+Mono:wght@500;600&display=swap">
-<style>
-html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
-/* Layout: road-sign identity. Navy band hero with a drawn "shortcut" route, then quiet light sections; yellow only where the shortcut is. */
-:root {
-  --bg: #F1F4F7;
-  --surface: #FFFFFF;
-  --ink: #0E1A2B;
-  --muted: #566476;
-  --line: #D3DBE4;
-  --sign: #F2B600;
-  --sign-ink: #0E1A2B;
-  --band-bg: #13294B;
-  --band-ink: #EEF3F8;
-  --band-muted: #9FB2C9;
-  --band-line: #3A5378;
-  --before: #B7C2CF;
-  --f-display: "Overpass", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --f-mono: "Overpass Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0B1220; --surface: #111B2C; --ink: #E5ECF4; --muted: #94A3B6; --line: #23324A;
-    --sign: #FFC52E; --sign-ink: #0B1220; --band-bg: #13223A; --band-ink: #E9EFF6;
-    --band-muted: #93A6BE; --band-line: #32496B; --before: #3D4F69; color-scheme: dark;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Atajo",
+  "description": "Automatizaciones, cobros y webs para negocios de Rosario.",
+  "url": "https://gianinsiderprogramer.github.io/landing/",
+  "founder": { "@type": "Person", "name": "Gianmarco Navas", "jobTitle": "Desarrollador de software" },
+  "areaServed": { "@type": "City", "name": "Rosario" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Rosario", "addressRegion": "Santa Fe", "addressCountry": "AR" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Del WhatsApp al sistema" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cobros que se hacen solos" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultas que no se enfrían" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web rápida y al día" } }
+    ]
   }
 }
-:root[data-theme="dark"] {
-  --bg: #0B1220; --surface: #111B2C; --ink: #E5ECF4; --muted: #94A3B6; --line: #23324A;
-  --sign: #FFC52E; --sign-ink: #0B1220; --band-bg: #13223A; --band-ink: #E9EFF6;
-  --band-muted: #93A6BE; --band-line: #32496B; --before: #3D4F69; color-scheme: dark;
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: dark, editorial. Big tight sans headlines with one italic serif accent each; numbered mono section labels; hairline rows instead of cards. Yellow is the only accent and marks the "atajo". */
+:root {
+  --bg: #0C0D0F;
+  --surface: #111215;
+  --surface-2: #16181C;
+  --ink: #EDEDE9;
+  --muted: #A3A5AB;
+  --muted-2: #8A8D93;
+  --line: #1F2125;
+  --line-2: #34363B;
+  --sign: #F2C230;
+  --sign-ink: #0C0D0F;
+  --before: #3A3D43;
+  --f-sans: "Inter Tight", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --pad: clamp(20px, 5vw, 56px);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 body {
   background: var(--bg); color: var(--ink);
-  font-family: var(--f-body); font-size: 17px; line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--f-sans); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; margin: 0; text-wrap: balance; }
-p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 500; letter-spacing: -.035em; line-height: 1.04; text-wrap: balance; }
+p, ul, ol { margin: 0; }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--sign); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--sign); color: var(--sign-ink); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--sign); outline-offset: 3px; border-radius: 6px; }
+.it { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
+.skip { position: absolute; left: 12px; top: -48px; background: var(--sign); color: var(--sign-ink); padding: 8px 12px; border-radius: 6px; z-index: 20; }
+.skip:focus { top: 12px; }
 
 .wrap {
-  max-width: 1120px; margin-inline: auto;
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  max-width: 1200px; margin-inline: auto;
+  padding-left: max(var(--pad), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--pad), env(safe-area-inset-right, 0px));
 }
-.eyebrow {
-  font-family: var(--f-mono); font-size: 13px; font-weight: 600;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+.kicker {
+  display: block; font-family: var(--f-mono); font-size: 12px; font-weight: 400;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2);
 }
+.kicker b { color: var(--sign); font-weight: 400; }
 
-/* Header + hero band */
-.band { background: var(--band-bg); color: var(--band-ink); }
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 900; font-size: 24px; letter-spacing: -.01em; text-decoration: none; }
-.logo-mark { width: 30px; height: 30px; flex: none; }
-.nav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; }
-.nav a { text-decoration: none; color: var(--band-muted); }
-.nav a:hover { color: var(--band-ink); }
+/* Header */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(140%) blur(12px); backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; letter-spacing: -.03em; text-decoration: none; }
+.logo-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--sign); box-shadow: 0 0 0 4px color-mix(in srgb, var(--sign) 18%, transparent); }
+.nav { display: flex; gap: 32px; font-size: 14px; }
+.nav a { text-decoration: none; color: var(--muted-2); transition: color .15s; }
+.nav a:hover { color: var(--ink); }
+
 .btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--f-display); font-weight: 800; font-size: 17px;
-  padding: 13px 22px 11px; border-radius: 6px; text-decoration: none; border: 0; cursor: pointer;
-  background: var(--sign); color: var(--sign-ink);
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 15px/1 var(--f-sans); letter-spacing: -.01em;
+  padding: 15px 22px; border-radius: 999px; text-decoration: none; border: 0; cursor: pointer;
+  background: var(--ink); color: var(--bg); transition: background .15s, box-shadow .15s, color .15s;
 }
-.btn:hover { filter: brightness(1.06); }
-.btn-small { padding: 9px 16px 7px; font-size: 15px; }
-.btn-ghost { background: transparent; color: var(--band-ink); box-shadow: inset 0 0 0 2px var(--band-line); }
+.btn:hover { background: #fff; }
+.btn .arr { transition: transform .15s; }
+.btn:hover .arr { transform: translateX(3px); }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-2); }
+.btn-ghost:hover { background: transparent; box-shadow: inset 0 0 0 1px var(--muted-2); }
+.btn-sign { background: var(--sign); color: var(--sign-ink); }
+.btn-sign:hover { background: #FFD24D; }
+.btn-small { padding: 10px 16px; font-size: 14px; }
 
-.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 48px 72px; }
-.hero h1 { font-size: clamp(38px, 5.6vw, 66px); font-weight: 900; letter-spacing: -.02em; }
-.hero h1 mark { background: none; color: var(--sign); }
-.hero-sub { margin-top: 22px; font-size: 19px; color: var(--band-muted); max-width: 34em; }
-.hero-cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
-.route { width: 100%; height: auto; max-width: 100%; display: block; }
-.route .slow { fill: none; stroke: var(--band-muted); stroke-width: 2.5; stroke-dasharray: 2 9; stroke-linecap: round; }
-.route .stop { fill: var(--band-bg); stroke: var(--band-muted); stroke-width: 2.5; }
-.route .lbl { fill: var(--band-muted); font: 500 14px var(--f-body); }
-.route .fast { fill: none; stroke: var(--sign); stroke-width: 6; stroke-linecap: round; }
-.route .fast-lbl { fill: var(--sign); font: 800 16px var(--f-display); letter-spacing: .04em; text-transform: uppercase; }
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px; opacity: .55;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 70% 40%, #000 20%, transparent 75%);
+}
+.hero::after {
+  content: ""; position: absolute; right: -15%; top: -35%; width: 70%; height: 150%; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--sign) 11%, transparent), transparent);
+}
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: clamp(64px, 11vw, 136px) clamp(56px, 8vw, 104px); }
+.hero h1 { margin-top: 26px; font-size: clamp(44px, 7.2vw, 96px); line-height: .98; letter-spacing: -.045em; max-width: 12ch; }
+.hero h1 .it { color: var(--sign); }
+.hero-sub { margin-top: 28px; font-size: clamp(17px, 1.5vw, 19px); color: var(--muted); max-width: 34em; }
+.hero-cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+.route-fig { margin: 0; }
+.route { width: 100%; height: auto; display: block; }
+.route .slow { fill: none; stroke: var(--muted-2); stroke-width: 1.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+.route .stop { fill: var(--bg); stroke: var(--muted-2); stroke-width: 1.5; }
+.route .lbl { fill: var(--muted-2); font: 400 13px var(--f-mono); }
+.route .fast { fill: none; stroke: var(--sign); stroke-width: 3; stroke-linecap: round; }
+.route .fast-lbl { fill: var(--sign); font: italic 400 22px var(--f-serif); }
 .route .end { fill: var(--sign); }
-.route .end-lbl { fill: var(--band-ink); font: 800 16px var(--f-display); }
-.route .runner { fill: var(--band-ink); }
-.route-cap { margin-top: 10px; font-size: 14px; color: var(--band-muted); font-family: var(--f-mono); }
+.route .end-halo { fill: var(--sign); opacity: .18; }
+.route .end-lbl { fill: var(--ink); font: 500 16px var(--f-sans); }
+.route .runner { fill: var(--ink); }
+.route-cap { margin-top: 14px; font: 400 12px/1.6 var(--f-mono); color: var(--muted-2); max-width: 40em; }
 
 /* Sections */
-section { padding-block: 88px; }
-section + section { border-top: 1px solid var(--line); }
-.sec-head { display: grid; gap: 14px; max-width: 46em; margin-bottom: 44px; }
-.sec-head h2 { font-size: clamp(30px, 3.8vw, 44px); font-weight: 900; letter-spacing: -.015em; }
-.sec-head p { color: var(--muted); font-size: 18px; }
+section { padding-block: clamp(72px, 10vw, 128px); border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 56px; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); }
+.sec-head .kicker { grid-column: 1 / -1; }
+.sec-head h2 { font-size: clamp(34px, 4.6vw, 60px); }
+.sec-head p { color: var(--muted); font-size: 18px; max-width: 32em; }
 
 /* Case study */
-.case { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
-.metrics { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 26px; }
-.metrics-legend { display: flex; gap: 20px; font-size: 13px; color: var(--muted); font-family: var(--f-mono); }
-.key { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-.key-before { background: var(--before); }
-.key-after { background: var(--sign); }
-.metric { display: grid; gap: 8px; }
-.metric-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.metric-name { font-weight: 600; font-size: 16px; }
-.metric-name small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
-.metric-val { font-family: var(--f-mono); font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.metric-val .arrow { color: var(--muted); padding-inline: 4px; }
-.bars { display: grid; gap: 5px; }
-.track { height: 10px; background: transparent; position: relative; }
-.bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.case { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.metric { background: var(--surface); padding: clamp(20px, 2.4vw, 30px); display: grid; gap: 14px; align-content: start; }
+.metric-val { font: 400 clamp(26px, 3vw, 38px)/1.05 var(--f-mono); letter-spacing: -.045em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.metric-val .was { color: var(--muted-2); }
+.metric-val .arrow { color: var(--muted-2); font-size: .6em; vertical-align: .18em; padding-inline: .15em; }
+.metric-val .unit { font-size: .55em; color: var(--muted); letter-spacing: 0; margin-left: .15em; }
+.metric-name { font-size: 15px; font-weight: 500; line-height: 1.35; }
+.metric-name small { display: block; margin-top: 3px; font-weight: 400; color: var(--muted-2); font-size: 13px; }
+.bars { display: grid; gap: 4px; }
+.track { height: 4px; border-radius: 4px; background: var(--surface-2); position: relative; overflow: hidden; }
+.bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; }
 .bar-before { background: var(--before); }
 .bar-after { background: var(--sign); }
-.bar-range { background: var(--sign); opacity: .4; }
-.case-side { display: grid; gap: 22px; }
-.case-side h3 { font-size: 26px; font-weight: 800; }
-.case-side .client { color: var(--muted); }
-.done { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.done li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; }
-.done svg { margin-top: 5px; }
-.done .tick { stroke: var(--ink); }
-.pill { display: inline-block; font-family: var(--f-mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px 2px; border-radius: 4px; background: var(--sign); color: var(--sign-ink); margin-right: 6px; }
-.case-link { font-weight: 600; text-underline-offset: 4px; }
-.source { font-size: 13px; color: var(--muted); }
+.bar-range { background: var(--sign); opacity: .35; }
+.metrics-legend { grid-column: 1 / -1; background: var(--surface); padding: 14px clamp(20px, 2.4vw, 30px); display: flex; gap: 22px; font: 400 12px var(--f-mono); color: var(--muted-2); }
+.key { display: inline-block; width: 10px; height: 4px; border-radius: 2px; margin-right: 8px; vertical-align: 3px; }
+.key-before { background: var(--before); }
+.key-after { background: var(--sign); }
+
+.case-side { display: grid; gap: 26px; }
+.case-side h3 { font-size: 24px; }
+.done { list-style: none; padding: 0; border-top: 1px solid var(--line); counter-reset: d; }
+.done li { counter-increment: d; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+.done li::before { content: counter(d, decimal-leading-zero); font: 400 12px/2.1 var(--f-mono); color: var(--muted-2); }
+.pill { display: inline-block; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; background: color-mix(in srgb, var(--sign) 14%, transparent); color: var(--sign); margin-right: 8px; vertical-align: 1px; }
+.case-side .ongoing { color: var(--muted); font-size: 16px; }
+.case-link { display: inline-flex; gap: 8px; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; width: fit-content; transition: border-color .15s; }
+.case-link:hover { border-color: var(--sign); }
+.source { font: 400 12px/1.6 var(--f-mono); color: var(--muted-2); }
 
 /* Services */
-.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 14px; align-content: start; }
-.svc h3 { font-size: 24px; font-weight: 800; }
-.svc .pain { color: var(--muted); }
-.svc ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-.svc li::marker { color: var(--muted); }
-.svc .for { font-size: 14px; color: var(--muted); padding-top: 12px; border-top: 1px dashed var(--line); }
-.svc .for b { color: var(--ink); font-weight: 600; }
-.pricing-note { margin-top: 28px; color: var(--muted); max-width: 46em; }
+.services { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.svc { display: grid; grid-template-columns: 72px minmax(0, 1.1fr) minmax(0, 1fr); gap: 12px 40px; padding: clamp(28px, 3.4vw, 44px) 0; border-bottom: 1px solid var(--line); transition: background .2s; }
+.svc-n { font: 400 13px/2.6 var(--f-mono); color: var(--muted-2); }
+.svc h3 { font-size: clamp(26px, 3vw, 38px); transition: color .2s; }
+.svc:hover h3 { color: var(--sign); }
+.svc .pain { margin-top: 12px; color: var(--muted); max-width: 30em; }
+.svc-detail { display: grid; gap: 18px; align-content: start; padding-top: 6px; }
+.svc ul { list-style: none; padding: 0; display: grid; gap: 8px; }
+.svc li { position: relative; padding-left: 20px; font-size: 16px; }
+.svc li::before { content: ""; position: absolute; left: 0; top: .78em; width: 8px; height: 1px; background: var(--muted-2); }
+.svc .for { font: 400 12px/1.7 var(--f-mono); color: var(--muted-2); letter-spacing: .02em; }
+.svc .for b { color: var(--ink); font-weight: 500; text-transform: uppercase; letter-spacing: .08em; margin-right: 6px; }
+.pricing-note { margin-top: 36px; color: var(--muted); max-width: 46em; padding-left: 112px; }
 
 /* Process */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
-.steps li { counter-increment: s; padding: 0 22px 0 0; display: grid; gap: 10px; align-content: start; position: relative; }
-.steps li::before {
-  content: counter(s); font-family: var(--f-display); font-weight: 900; font-size: 22px;
-  width: 44px; height: 44px; display: grid; place-items: center; padding-top: 3px;
-  background: var(--surface); border: 2px solid var(--ink); border-radius: 50%; position: relative; z-index: 1;
-}
-.steps li::after { content: ""; position: absolute; top: 22px; left: 44px; right: 0; border-top: 2px dashed var(--line); }
-.steps li:last-child::after { display: none; }
-.steps h3 { font-size: 20px; font-weight: 800; margin-top: 6px; }
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; border-top: 1px solid var(--line-2); }
+.steps li { counter-increment: s; padding: 24px 28px 0 0; display: grid; gap: 12px; align-content: start; position: relative; }
+.steps li::before { content: counter(s, decimal-leading-zero); font: 400 12px var(--f-mono); color: var(--muted-2); letter-spacing: .08em; }
+.steps li:first-child::after { content: ""; position: absolute; top: -1px; left: 0; width: 40px; height: 1px; background: var(--sign); }
+.steps h3 { font-size: 22px; letter-spacing: -.025em; }
 .steps p { color: var(--muted); font-size: 16px; }
 
 /* About + contact */
-.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
-.about p + p { margin-top: 14px; }
-.contact-card { background: var(--band-bg); color: var(--band-ink); border-radius: 12px; padding: 36px; display: grid; gap: 18px; }
-.contact-card h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 900; }
-.contact-card p { color: var(--band-muted); }
-.phone { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.phone-num { font-family: var(--f-mono); font-size: 20px; font-weight: 600; user-select: all; }
-.copy { font: 600 14px var(--f-body); background: transparent; color: var(--band-ink); border: 2px solid var(--band-line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
-.copy:hover { border-color: var(--band-muted); }
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.about-text h2 { margin-top: 20px; font-size: clamp(34px, 4.6vw, 60px); }
+.about-text p { margin-top: 22px; color: var(--muted); font-size: 18px; max-width: 30em; }
+.about-text p + p { margin-top: 14px; }
+.contact-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(26px, 3.4vw, 44px); display: grid; gap: 20px; }
+.contact-card::after { content: ""; position: absolute; right: -30%; bottom: -60%; width: 90%; height: 120%; pointer-events: none; background: radial-gradient(closest-side, color-mix(in srgb, var(--sign) 12%, transparent), transparent); }
+.contact-card > * { position: relative; z-index: 1; }
+.contact-card h2 { font-size: clamp(30px, 3.4vw, 44px); }
+.contact-card h2 .it { color: var(--sign); }
+.contact-card p { color: var(--muted); }
+.phone { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-block: 18px; border-block: 1px solid var(--line); }
+.phone-num { font: 400 clamp(18px, 2vw, 22px) var(--f-mono); letter-spacing: -.02em; user-select: all; }
+.copy { font: 500 13px var(--f-sans); background: transparent; color: var(--ink); border: 0; box-shadow: inset 0 0 0 1px var(--line-2); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: box-shadow .15s; }
+.copy:hover { box-shadow: inset 0 0 0 1px var(--muted-2); }
 
-footer { padding-block: 36px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer { padding-block: 36px; color: var(--muted-2); font: 400 12px var(--f-mono); letter-spacing: .04em; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-@media (max-width: 900px) {
-  .hero, .case, .about { grid-template-columns: minmax(0, 1fr); }
-  .hero { gap: 36px; padding-block: 24px 56px; }
-  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
-  .steps li:nth-child(2)::after { display: none; }
+@media (max-width: 1000px) {
+  .hero-grid, .case, .about { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid { gap: 40px; }
+  .route-fig { max-width: 620px; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; border-top: 0; }
+  .steps li { border-top: 1px solid var(--line-2); }
+  .svc { grid-template-columns: 56px minmax(0, 1fr); }
+  .svc-detail { grid-column: 2; }
+  .pricing-note { padding-left: 96px; }
 }
-@media (max-width: 640px) {
-  body { font-size: 16px; }
+@media (max-width: 760px) {
   .nav { display: none; }
-  section { padding-block: 64px; }
-  .services, .steps { grid-template-columns: minmax(0, 1fr); }
-  .steps li::after { display: none; }
-  .metrics, .svc, .contact-card { padding: 22px; }
-  /* The route SVG scales down to ~60%; bump its labels so they stay readable. */
-  .route .lbl { font-size: 20px; }
-  .route .fast-lbl, .route .end-lbl { font-size: 21px; }
+  .sec-head { grid-template-columns: minmax(0, 1fr); }
+  .svc { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .svc-n { line-height: 1.6; }
+  .svc-detail { grid-column: 1; }
+  .pricing-note { padding-left: 0; }
+  .route .lbl { font: 400 19px var(--f-sans); }
+  .route .fast-lbl { font-size: 28px; }
+  .route .end-lbl { font-size: 21px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .top .wrap { height: 58px; }
+  section { scroll-margin-top: 58px; }
+  .hero h1 { font-size: clamp(40px, 12.4vw, 56px); }
+  .hero-cta .btn { flex: 1 1 100%; justify-content: center; }
+  .metrics { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .contact-card .btn { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-<div class="band">
-  <div class="wrap">
-    <header class="top">
-      <a class="logo" href="#inicio" aria-label="Atajo, inicio">
-        <svg class="logo-mark" viewBox="0 0 30 30" aria-hidden="true">
-          <rect x="3" y="3" width="24" height="24" rx="4" transform="rotate(45 15 15)" fill="var(--sign)"/>
-          <path d="M10 19 L19.5 9.5 M13 9.5 H19.5 V16" fill="none" stroke="var(--sign-ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Atajo
-      </a>
-      <nav class="nav" aria-label="Secciones">
-        <a href="#caso">Caso real</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#como">Cómo trabajo</a>
-      </nav>
-      <a class="btn btn-small" href="#contacto">Diagnóstico gratis</a>
-    </header>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-    <div class="hero" id="inicio">
-      <div>
-        <h1>Lo que hoy hacés a mano, <mark>que se haga solo.</mark></h1>
-        <p class="hero-sub">Automatizo WhatsApp, cobros y webs para negocios de Rosario. Vos atendés a tus clientes; lo repetitivo corre por su cuenta.</p>
-        <div class="hero-cta">
-          <a class="btn" href="#contacto">Pedí un diagnóstico gratis</a>
-          <a class="btn btn-ghost" href="#caso">Ver un caso real</a>
-        </div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Atajo, inicio"><span class="logo-dot" aria-hidden="true"></span>Atajo</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#caso">Caso real</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#como">Cómo trabajo</a>
+    </nav>
+    <a class="btn btn-small" href="#contacto">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<div class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker"><b>●</b>&nbsp; Rosario, Santa Fe</span>
+      <h1>Lo que hoy hacés a mano, <span class="it">que se haga solo.</span></h1>
+      <p class="hero-sub">Automatizo WhatsApp, cobros y webs para negocios de Rosario. Vos atendés a tus clientes; lo repetitivo corre por su cuenta.</p>
+      <div class="hero-cta">
+        <a class="btn btn-sign" href="#contacto">Pedí un diagnóstico gratis <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#caso">Ver un caso real</a>
       </div>
-      <figure style="margin:0">
-        <svg class="route" viewBox="0 0 560 290" role="img" aria-labelledby="route-t">
-          <title id="route-t">Camino manual de cinco pasos frente a un atajo directo automatizado</title>
-          <path class="slow" d="M50 230 L150 70 L260 230 L370 70 L470 150"/>
-          <circle class="stop" cx="50" cy="230" r="7"/>
-          <circle class="stop" cx="150" cy="70" r="7"/>
-          <circle class="stop" cx="260" cy="230" r="7"/>
-          <circle class="stop" cx="370" cy="70" r="7"/>
-          <text class="lbl" x="50" y="262" text-anchor="start">Llega la foto</text>
-          <text class="lbl" x="150" y="50" text-anchor="middle">Leés el dato</text>
-          <text class="lbl" x="260" y="262" text-anchor="middle">Abrís el sistema</text>
-          <text class="lbl" x="370" y="50" text-anchor="middle">Lo tipeás</text>
-          <path class="fast" d="M50 230 L470 150"/>
-          <text class="fast-lbl" x="150" y="198" text-anchor="middle" transform="rotate(-10.78 150 198)">Automático</text>
-          <circle class="end" cx="470" cy="150" r="11"/>
-          <text class="end-lbl" x="490" y="156">Listo</text>
-          <circle class="runner" r="5">
-            <animateMotion dur="2.8s" repeatCount="indefinite" path="M50 230 L470 150"/>
-          </circle>
-        </svg>
-        <figcaption class="route-cap">Ejemplo: datos que llegan por WhatsApp y se cargan solos en tu sistema.</figcaption>
-      </figure>
     </div>
+    <figure class="route-fig">
+      <svg class="route" viewBox="0 0 560 290" role="img" aria-labelledby="route-t">
+        <title id="route-t">Camino manual de cinco pasos frente a un atajo directo automatizado</title>
+        <path class="slow" d="M50 230 L150 70 L260 230 L370 70 L470 150"/>
+        <circle class="stop" cx="50" cy="230" r="6"/>
+        <circle class="stop" cx="150" cy="70" r="6"/>
+        <circle class="stop" cx="260" cy="230" r="6"/>
+        <circle class="stop" cx="370" cy="70" r="6"/>
+        <text class="lbl" x="50" y="262" text-anchor="start">Llega la foto</text>
+        <text class="lbl" x="150" y="48" text-anchor="middle">Leés el dato</text>
+        <text class="lbl" x="260" y="262" text-anchor="middle">Abrís el sistema</text>
+        <text class="lbl" x="370" y="48" text-anchor="middle">Lo tipeás</text>
+        <path class="fast" d="M50 230 L470 150"/>
+        <text class="fast-lbl" x="150" y="197" text-anchor="middle" transform="rotate(-10.78 150 197)">Automático</text>
+        <circle class="end-halo" cx="470" cy="150" r="18"/>
+        <circle class="end" cx="470" cy="150" r="8"/>
+        <text class="end-lbl" x="492" y="156">Listo</text>
+        <circle class="runner" r="4">
+          <animateMotion dur="2.8s" repeatCount="indefinite" path="M50 230 L470 150"/>
+        </circle>
+      </svg>
+      <figcaption class="route-cap">Ejemplo: datos que llegan por WhatsApp y se cargan solos en tu sistema.</figcaption>
+    </figure>
   </div>
 </div>
 
-<main>
-  <section id="caso">
+<main id="contenido">
+  <section id="caso" aria-labelledby="caso-t">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Caso real · Academia de idiomas</span>
-        <h2>Índigo Idiomas: una web más rápida que ahora aparece mejor en Google</h2>
+        <span class="kicker"><b>01</b> — Caso real · Academia de idiomas</span>
+        <h2 id="caso-t">Índigo Idiomas: una web más rápida que ahora <span class="it">aparece mejor en Google</span></h2>
         <p>La academia vende cursos online desde su web. La portada tardaba 16 segundos en mostrarse en el celular y pesaba más de 9 MB.</p>
       </div>
       <div class="case">
-        <div class="metrics" id="metrics" aria-label="Resultados antes y después">
-          <div class="metrics-legend"><span><i class="key key-before"></i>Antes</span><span><i class="key key-after"></i>Después</span></div>
+        <div class="metrics" role="list" aria-label="Resultados antes y después">
+          <div class="metric" role="listitem">
+            <div class="metric-val"><span class="was">39</span><span class="arrow" aria-label="pasó a">→</span>53–58</div>
+            <div class="bars" aria-hidden="true">
+              <div class="track"><div class="bar bar-before" style="width:39%"></div></div>
+              <div class="track"><div class="bar bar-range" style="width:58%"></div><div class="bar bar-after" style="width:53%"></div></div>
+            </div>
+            <div class="metric-name">Velocidad en celular<small>Puntaje de 0 a 100, más es mejor</small></div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-val"><span class="was">16</span><span class="arrow" aria-label="pasó a">→</span>6–8<span class="unit">s</span></div>
+            <div class="bars" aria-hidden="true">
+              <div class="track"><div class="bar bar-before" style="width:100%"></div></div>
+              <div class="track"><div class="bar bar-range" style="width:50%"></div><div class="bar bar-after" style="width:37.5%"></div></div>
+            </div>
+            <div class="metric-name">Tiempo hasta ver la portada<small>Segundos, menos es mejor</small></div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-val"><span class="was">9,3</span><span class="arrow" aria-label="pasó a">→</span>4<span class="unit">MB</span></div>
+            <div class="bars" aria-hidden="true">
+              <div class="track"><div class="bar bar-before" style="width:100%"></div></div>
+              <div class="track"><div class="bar bar-after" style="width:43%"></div></div>
+            </div>
+            <div class="metric-name">Peso de la portada<small>Megabytes, menos es mejor</small></div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-val"><span class="was">85</span><span class="arrow" aria-label="pasó a">→</span>92</div>
+            <div class="bars" aria-hidden="true">
+              <div class="track"><div class="bar bar-before" style="width:85%"></div></div>
+              <div class="track"><div class="bar bar-after" style="width:92%"></div></div>
+            </div>
+            <div class="metric-name">Puntaje SEO<small>De 0 a 100, más es mejor</small></div>
+          </div>
+          <div class="metrics-legend" aria-hidden="true"><span><i class="key key-before"></i>Antes</span><span><i class="key key-after"></i>Después</span></div>
         </div>
         <div class="case-side">
           <h3>Qué se hizo</h3>
-          <ul class="done">
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imágenes pasadas a WebP, caché y compresión activadas.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Limpieza de plugins y de datos que frenaban cada página.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Actualización de PHP 8.1 a 8.3, probando tienda, pagos y cursos.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="tick" d="M2 8.5 L6 12.5 L14 3.5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SEO configurado en páginas y cursos, con Google Search Console y sitemap.</span></li>
-          </ul>
-          <p><span class="pill">En curso</span>Cobro de cursos en cuotas con Mercado Pago, con aviso automático si un pago falla.</p>
-          <p><a class="case-link" href="https://indigoidiomas.com" target="_blank" rel="noopener">Ver indigoidiomas.com</a></p>
+          <ol class="done">
+            <li>Imágenes pasadas a WebP, caché y compresión activadas.</li>
+            <li>Limpieza de plugins y de datos que frenaban cada página.</li>
+            <li>Actualización de PHP 8.1 a 8.3, probando tienda, pagos y cursos.</li>
+            <li>SEO configurado en páginas y cursos, con Google Search Console y sitemap.</li>
+          </ol>
+          <p class="ongoing"><span class="pill">En curso</span>Cobro de cursos en cuotas con Mercado Pago, con aviso automático si un pago falla.</p>
+          <a class="case-link" href="https://indigoidiomas.com" target="_blank" rel="noopener">Ver indigoidiomas.com <span aria-hidden="true">↗</span></a>
           <p class="source">Velocidad medida con Google PageSpeed en celular; SEO, con la auditoría de la misma herramienta.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="servicios">
+  <section id="servicios" aria-labelledby="servicios-t">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Servicios</span>
-        <h2>Cuatro problemas que resuelvo</h2>
+        <span class="kicker"><b>02</b> — Servicios</span>
+        <h2 id="servicios-t">Cuatro problemas que <span class="it">resuelvo</span></h2>
         <p>Cada servicio tiene alcance y precio cerrados. Sabés qué recibís antes de empezar.</p>
       </div>
-      <div class="services">
-        <article class="svc">
-          <h3>Del WhatsApp al sistema</h3>
-          <p class="pain">Te mandan fotos, audios o PDFs por WhatsApp y alguien los pasa a mano.</p>
-          <ul>
-            <li>Lectura automática de fotos y documentos con IA</li>
-            <li>Carga directa en tu sistema o planilla</li>
-            <li>Aviso cuando algo no se pudo leer</li>
-          </ul>
-          <p class="for"><b>Para:</b> administraciones, estudios contables, distribuidoras, logística.</p>
-        </article>
-        <article class="svc">
-          <h3>Cobros que se hacen solos</h3>
-          <p class="pain">Perseguir pagos te come tiempo y te desgasta con los clientes.</p>
-          <ul>
-            <li>Cuotas y suscripciones con Mercado Pago</li>
-            <li>Aviso automático cuando un pago falla</li>
-            <li>Acceso que se corta y se reactiva sin que intervengas</li>
-          </ul>
-          <p class="for"><b>Para:</b> academias, gimnasios, institutos, cursos online.</p>
-        </article>
-        <article class="svc">
-          <h3>Consultas que no se enfrían</h3>
-          <p class="pain">Te llegan consultas y se pierden por contestar tarde.</p>
-          <ul>
-            <li>Campaña en Instagram y Facebook (Meta Ads)</li>
-            <li>Respuesta al instante y seguimiento al día 1, 3 y 7</li>
-            <li>Cada consulta registrada en una planilla</li>
-          </ul>
-          <p class="for"><b>Para:</b> talleres, consultorios, comercios de barrio.</p>
-        </article>
-        <article class="svc">
-          <h3>Web rápida y al día</h3>
-          <p class="pain">Tu web tarda en cargar, no aparece en Google o nadie la actualiza.</p>
-          <ul>
-            <li>Optimización de velocidad e imágenes</li>
-            <li>SEO básico y alta en Google Search Console</li>
-            <li>Mantenimiento, backups y reporte mensual</li>
-          </ul>
-          <p class="for"><b>Para:</b> cualquier negocio con web en WordPress.</p>
-        </article>
-      </div>
+      <ol class="services">
+        <li class="svc">
+          <span class="svc-n">(01)</span>
+          <div>
+            <h3>Del WhatsApp al sistema</h3>
+            <p class="pain">Te mandan fotos, audios o PDFs por WhatsApp y alguien los pasa a mano.</p>
+          </div>
+          <div class="svc-detail">
+            <ul>
+              <li>Lectura automática de fotos y documentos con IA</li>
+              <li>Carga directa en tu sistema o planilla</li>
+              <li>Aviso cuando algo no se pudo leer</li>
+            </ul>
+            <p class="for"><b>Para:</b> administraciones, estudios contables, distribuidoras, logística.</p>
+          </div>
+        </li>
+        <li class="svc">
+          <span class="svc-n">(02)</span>
+          <div>
+            <h3>Cobros que se hacen solos</h3>
+            <p class="pain">Perseguir pagos te come tiempo y te desgasta con los clientes.</p>
+          </div>
+          <div class="svc-detail">
+            <ul>
+              <li>Cuotas y suscripciones con Mercado Pago</li>
+              <li>Aviso automático cuando un pago falla</li>
+              <li>Acceso que se corta y se reactiva sin que intervengas</li>
+            </ul>
+            <p class="for"><b>Para:</b> academias, gimnasios, institutos, cursos online.</p>
+          </div>
+        </li>
+        <li class="svc">
+          <span class="svc-n">(03)</span>
+          <div>
+            <h3>Consultas que no se enfrían</h3>
+            <p class="pain">Te llegan consultas y se pierden por contestar tarde.</p>
+          </div>
+          <div class="svc-detail">
+            <ul>
+              <li>Campaña en Instagram y Facebook (Meta Ads)</li>
+              <li>Respuesta al instante y seguimiento al día 1, 3 y 7</li>
+              <li>Cada consulta registrada en una planilla</li>
+            </ul>
+            <p class="for"><b>Para:</b> talleres, consultorios, comercios de barrio.</p>
+          </div>
+        </li>
+        <li class="svc">
+          <span class="svc-n">(04)</span>
+          <div>
+            <h3>Web rápida y al día</h3>
+            <p class="pain">Tu web tarda en cargar, no aparece en Google o nadie la actualiza.</p>
+          </div>
+          <div class="svc-detail">
+            <ul>
+              <li>Optimización de velocidad e imágenes</li>
+              <li>SEO básico y alta en Google Search Console</li>
+              <li>Mantenimiento, backups y reporte mensual</li>
+            </ul>
+            <p class="for"><b>Para:</b> cualquier negocio con web en WordPress.</p>
+          </div>
+        </li>
+      </ol>
       <p class="pricing-note">Se paga una vez la puesta en marcha y, si querés que lo siga cuidando, un abono mensual por mantenimiento y mejoras.</p>
     </div>
   </section>
 
-  <section id="como">
+  <section id="como" aria-labelledby="como-t">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Cómo trabajo</span>
-        <h2>De la primera charla a algo funcionando</h2>
+        <span class="kicker"><b>03</b> — Cómo trabajo</span>
+        <h2 id="como-t">De la primera charla a <span class="it">algo funcionando</span></h2>
       </div>
       <ol class="steps">
         <li><h3>Diagnóstico gratis</h3><p>Me contás en qué se te va el tiempo. Te mando un video corto con lo que automatizaría primero.</p></li>
@@ -349,24 +469,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </div>
   </section>
 
-  <section id="contacto">
+  <section id="contacto" aria-labelledby="contacto-t">
     <div class="wrap about">
-      <div>
-        <div class="sec-head" style="margin-bottom:20px">
-          <span class="eyebrow">Quién está detrás</span>
-          <h2>Hola, soy Gianmarco</h2>
-        </div>
+      <div class="about-text">
+        <span class="kicker"><b>04</b> — Quién está detrás</span>
+        <h2 id="contacto-t">Hola, soy <span class="it">Gianmarco</span></h2>
         <p>Soy desarrollador de software en Rosario. Armo automatizaciones, sistemas a medida y webs para negocios que no tienen un equipo de sistemas propio.</p>
         <p>Trabajo directo con cada cliente: el que te responde es el mismo que lo hace.</p>
       </div>
       <div class="contact-card">
-        <h2>Pedí tu diagnóstico gratis</h2>
+        <h2>Pedí tu diagnóstico <span class="it">gratis</span></h2>
         <p>Escribime por WhatsApp contándome qué hace tu negocio y qué tarea te gustaría sacarte de encima.</p>
         <div class="phone">
           <span class="phone-num" id="phone">+54 9 341 XXX-XXXX</span>
           <button class="copy" id="copy" type="button">Copiar número</button>
         </div>
-        <div><a class="btn" id="wa" href="https://wa.me/549341XXXXXXX?text=Hola%20Gianmarco%2C%20quiero%20pedir%20un%20diagn%C3%B3stico" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+        <div><a class="btn btn-sign" id="wa" href="https://wa.me/549341XXXXXXX?text=Hola%20Gianmarco%2C%20quiero%20pedir%20un%20diagn%C3%B3stico" target="_blank" rel="noopener">Escribir por WhatsApp <span class="arr" aria-hidden="true">→</span></a></div>
       </div>
     </div>
   </section>
@@ -381,34 +499,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <script>
 (function () {
-  // Índigo Idiomas, mediciones reales (PageSpeed móvil).
-  var metrics = [
-    { name: "Velocidad en celular", note: "Puntaje de 0 a 100, más es mejor", before: 39, lo: 53, hi: 58, scale: 100, fmt: function (v) { return String(v); } },
-    { name: "Tiempo hasta ver la portada", note: "Segundos, menos es mejor", before: 16, lo: 6, hi: 8, unit: " s", fmt: function (v) { return String(v); } },
-    { name: "Peso de la portada", note: "Megabytes, menos es mejor", before: 9.3, lo: 4, hi: 4, unit: " MB", fmt: function (v) { return String(v).replace(".", ","); } },
-    { name: "Puntaje SEO", note: "De 0 a 100, más es mejor", before: 85, lo: 92, hi: 92, scale: 100, fmt: function (v) { return String(v); } }
-  ];
-  var box = document.getElementById("metrics");
-  metrics.forEach(function (m) {
-    // Scores (0-100) are drawn against 100 so the change isn't exaggerated.
-    var max = m.scale || Math.max(m.before, m.hi);
-    var unit = m.unit || "";
-    var after = m.lo === m.hi ? m.fmt(m.lo) : m.fmt(m.lo) + "–" + m.fmt(m.hi);
-    var el = document.createElement("div");
-    el.className = "metric";
-    el.innerHTML =
-      '<div class="metric-top"><div class="metric-name">' + m.name + "<small>" + m.note + "</small></div>" +
-      '<div class="metric-val">' + m.fmt(m.before) + unit + '<span class="arrow">→</span>' + after + unit + "</div></div>" +
-      '<div class="bars">' +
-        '<div class="track"><div class="bar bar-before" style="width:' + (m.before / max * 100) + '%"></div></div>' +
-        '<div class="track">' +
-          (m.hi > m.lo ? '<div class="bar bar-range" style="width:' + (m.hi / max * 100) + '%"></div>' : "") +
-          '<div class="bar bar-after" style="width:' + (m.lo / max * 100) + '%"></div>' +
-        "</div>" +
-      "</div>";
-    box.appendChild(el);
-  });
-
   var copy = document.getElementById("copy");
   copy.addEventListener("click", function () {
     var txt = document.getElementById("phone").textContent;

@@ -1,0 +1,6 @@
+# Google solo lee este archivo en la raíz del dominio: empieza a valer cuando la landing tenga dominio propio.
+User-agent: *
+Allow: /
+
+# XXX: cuando haya dominio, cambiar la URL.
+Sitemap: https://gianinsiderprogramer.github.io/landing/sitemap.xml
