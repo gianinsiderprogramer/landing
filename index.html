@@ -42,11 +42,18 @@
   }
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Fonts are self-hosted (OFL, latin subset from Google Fonts) so they don't block the first paint.
+   The "fallback" faces resize a system font to the same metrics, so the headline doesn't jump when the real font arrives. */
+@font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/inter-tight-latin.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-italic-latin.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800; font-display: swap; src: url(fonts/jetbrains-mono-latin.woff2) format("woff2"); }
+@font-face { font-family: "Inter Tight fallback"; src: local("Arial"); size-adjust: 97%; ascent-override: 96.875%; descent-override: 24.21875%; line-gap-override: 0%; }
+@font-face { font-family: "Instrument Serif fallback"; font-style: italic; src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Georgia Italic"); size-adjust: 86%; }
+@font-face { font-family: "JetBrains Mono fallback"; src: local("Consolas"), local("Menlo"), local("Courier New"); size-adjust: 109%; }
 /* Layout: dark, editorial. Big tight sans headlines with one italic serif accent each; numbered mono section labels; hairline rows instead of cards. Yellow is the only accent and marks the "atajo". */
 :root {
   --bg: #0C0D0F;
@@ -60,9 +67,9 @@ html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
   --sign: #F2C230;
   --sign-ink: #0C0D0F;
   --before: #3A3D43;
-  --f-sans: "Inter Tight", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --f-sans: "Inter Tight", "Inter Tight fallback", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-serif: "Instrument Serif", "Instrument Serif fallback", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", "JetBrains Mono fallback", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --pad: clamp(20px, 5vw, 56px);
   color-scheme: dark;
 }
